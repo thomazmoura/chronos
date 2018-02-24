@@ -1,0 +1,25 @@
+{
+    "vsicons.associations.folders": [
+        {
+            "icon": "src",
+            "extensions": [
+                "Chronos.API"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "test",
+            "extensions": [
+                "Chronos.Testes"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "www",
+            "extensions": [
+                "Chronos.FrontEnd"
+            ],
+            "format": "svg"
+        }
+    ]
+}
