@@ -9,6 +9,7 @@ namespace Chronos.API.Entidades
         public decimal ValorDaHora { get; set; }
         public ICollection<Folha> Folhas { get; set; }
 
-        internal override bool PossuiTodosOsCamposObrigatorios => ValorDaHora > 0;
+        internal override bool PossuiTodosOsCamposObrigatorios =>
+            ValorDaHora > 0;
     }
 }

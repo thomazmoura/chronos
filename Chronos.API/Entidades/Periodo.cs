@@ -2,13 +2,15 @@ using System;
 
 namespace Chronos.API.Entidades
 {
-    public class Período
+    public class Periodo : Entidade<Periodo>
     {
-        public Guid Id { get; set; }
-        public DateTime HorárioDeInício { get; set; }
-        public DateTime HorárioDeEncerramento { get; set; }
-        public string Descrição { get; set; }
+        public DateTime HorarioDeInicio { get; set; }
+        public DateTime HorarioDeEncerramento { get; set; }
+        public string Descricao { get; set; }
 
         public Guid FolhaId { get; set; }
+
+        internal override bool PossuiTodosOsCamposObrigatorios =>
+            !String.IsNullOrWhiteSpace(Descricao);
     }
 }

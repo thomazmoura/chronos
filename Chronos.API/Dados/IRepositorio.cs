@@ -8,7 +8,7 @@ namespace Chronos.API.Dados
     {
         IQueryable<Contrato> Contratos { get; }
         IQueryable<Folha> Folhas { get; }
-        IQueryable<Período> Períodos { get; }
+        IQueryable<Periodo> Periodos { get; }
 
         void Acrescentar<TEntidade>(TEntidade entidade) where TEntidade : Entidade;
         void Atualizar<TEntidade>(TEntidade entidade) where TEntidade : Entidade;

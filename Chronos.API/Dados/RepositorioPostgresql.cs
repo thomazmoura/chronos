@@ -9,7 +9,7 @@ namespace Chronos.API.Dados
     {
         public IQueryable<Contrato> Contratos => _contexto.Contratos;
         public IQueryable<Folha> Folhas => _contexto.Folhas;
-        public IQueryable<Período> Períodos => _contexto.Períodos;
+        public IQueryable<Periodo> Periodos => _contexto.Periodos;
 
         private readonly ContextoDeDadosChronos _contexto;
 

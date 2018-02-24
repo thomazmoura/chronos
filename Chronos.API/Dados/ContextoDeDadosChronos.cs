@@ -9,6 +9,6 @@ namespace Chronos.API.Dados
 
         public DbSet<Contrato> Contratos { get; set; }
         public DbSet<Folha> Folhas { get; set; }
-        public DbSet<Período> Períodos { get; set; }
+        public DbSet<Periodo> Periodos { get; set; }
     }
 }

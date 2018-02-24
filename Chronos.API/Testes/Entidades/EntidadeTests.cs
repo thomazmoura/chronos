@@ -1,11 +1,13 @@
 using FluentAssertions;
 using Chronos.API.Entidades;
 using System;
+using Xunit;
 
 namespace Chronos.API.Testes.Entidades
 {
     public abstract class EntidadeTests<TEntidade> where TEntidade : Entidade<TEntidade>, new()
     {
+        [Fact]
         public void EntidadeEquivaleA_RetornaFalse_QuandoIdsSãoDiferentes()
         {
             var entidadeComparada = new TEntidade()

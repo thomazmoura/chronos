@@ -7,8 +7,8 @@ namespace Chronos.API.Entidades
     public abstract class Entidade
     {
         public Guid Id { get; set; }
-        internal virtual bool EstaValidoParaInsercao => Id == Guid.Empty && PossuiTodosOsCamposObrigatorios;
-        internal virtual bool EstaValidoParaAtualizacao => Id != Guid.Empty && PossuiTodosOsCamposObrigatorios;
+        internal virtual bool EstaValidoParaInsercao => Id == default(Guid) && PossuiTodosOsCamposObrigatorios;
+        internal virtual bool EstaValidoParaAtualizacao => Id != default(Guid) && PossuiTodosOsCamposObrigatorios;
         internal abstract bool PossuiTodosOsCamposObrigatorios { get; }
     }
 

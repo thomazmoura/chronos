@@ -11,9 +11,10 @@ using System;
 namespace Chronos.API.Dados.Migrations
 {
     [DbContext(typeof(ContextoDeDadosChronos))]
-    partial class ContextoDeDadosChronosModelSnapshot : ModelSnapshot
+    [Migration("20180224230110_RemocaoDeAcentos")]
+    partial class RemocaoDeAcentos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
