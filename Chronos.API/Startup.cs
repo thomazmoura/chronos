@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Chronos.API.Dados;
+using Chronos.API.Filters;
+using Chronos.API.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +29,6 @@ namespace Chronos.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("ContextoDeDadosChronos");
@@ -38,18 +39,15 @@ namespace Chronos.API
                     options.UseNpgsql(connectionString);
                 });
 
-            //TODO Implementar extensão de injeção de dependência
-            //services.UseChronosDependencies();
+            services.UseChronosDependencies();
 
             services.AddMvc(options =>
             {
-                //TODO Implementar UnitOfWork e Iterador
-                //options.Filters.Add<UnitOfWorkFilter>();
-                //options.Filters.Add<IQueryableIteratorFilter>();
+                options.Filters.Add<UnitOfWorkFilter>();
+                options.Filters.Add<IQueryableIteratorFilter>();
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

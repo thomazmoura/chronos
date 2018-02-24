@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 namespace Chronos.API.Entidades
 {
-    public class Contrato
+    public class Contrato : Entidade<Contrato>
     {
-        public Guid Id { get; set; }
         public decimal ValorDaHora { get; set; }
         public ICollection<Folha> Folhas { get; set; }
+
+        internal override bool PossuiTodosOsCamposObrigatorios => ValorDaHora > 0;
     }
 }
