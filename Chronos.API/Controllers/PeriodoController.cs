@@ -34,6 +34,7 @@ namespace Chronos.API.Controllers
             return Ok(periodo);
         }
 
+        [HttpPost]
         public IActionResult Post([FromBody] Periodo periodo)
         {
             if (periodo == null || !periodo.EstaValidoParaInsercao)
@@ -44,6 +45,7 @@ namespace Chronos.API.Controllers
             return CreatedAtRoute(NomeDaRotaDeConsulta, periodo.Id, periodo);
         }
 
+        [HttpPut]
         public IActionResult Put([FromBody] Periodo periodo)
         {
             if (periodo == null || !periodo.EstaValidoParaAtualizacao)
@@ -57,6 +59,7 @@ namespace Chronos.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete]
         public IActionResult Delete(Guid id)
         {
             if (!_repositorio.Periodos.ConstaNoBanco(id))

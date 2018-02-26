@@ -16,6 +16,7 @@ namespace Chronos.API.Controllers
             _repositorio = repositorio;
         }
 
+        [HttpGet]
         public IActionResult Get()
         {
             var folhas = _repositorio.Folhas;
@@ -47,6 +48,7 @@ namespace Chronos.API.Controllers
             return CreatedAtRoute(NomeDaRotaDeConsulta, folha.Id, folha);
         }
 
+        [HttpPut]
         public IActionResult Put([FromBody] Folha folha)
         {
             if (folha == null)
@@ -63,6 +65,7 @@ namespace Chronos.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete]
         public IActionResult Delete(Guid id)
         {
             if (!_repositorio.Folhas.ConstaNoBanco(id))

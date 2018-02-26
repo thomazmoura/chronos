@@ -16,6 +16,7 @@ namespace Chronos.API.Controllers
             _repositorio = repositorio;
         }
 
+        [HttpGet]
         public IActionResult Get()
         {
             var contratos = _repositorio.Contratos;
@@ -47,6 +48,7 @@ namespace Chronos.API.Controllers
             return CreatedAtRoute(NomeDaRotaDeConsulta, contrato.Id, contrato);
         }
 
+        [HttpPut]
         public IActionResult Put([FromBody] Contrato contrato)
         {
             if (contrato == null)
@@ -63,6 +65,7 @@ namespace Chronos.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete]
         public IActionResult Delete(Guid id)
         {
             if (!_repositorio.Contratos.ConstaNoBanco(id))
