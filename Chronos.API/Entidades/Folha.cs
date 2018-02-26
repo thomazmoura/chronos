@@ -7,7 +7,7 @@ namespace Chronos.API.Entidades
     {
         public DateTime DataInicial { get; set; }
         public DateTime? DataFinal { get; set; }
-        public int QuantidadePrevistaDeDiasÚteis { get; set; }
+        public int QuantidadePrevistaDeDiasUteis { get; set; }
 
         public Guid ContratoId { get; set; }
         public ICollection<Periodo> Periodos { get; set; }
