@@ -10,7 +10,7 @@
         {
             "icon": "test",
             "extensions": [
-                "Chronos.Testes"
+                "Chronos.API.Testes"
             ],
             "format": "svg"
         },
