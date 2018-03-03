@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Chronos.API.Dados;
 using Chronos.API.Filters;
 using Chronos.API.IoC;
+using Chronos.API.Objetos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -50,6 +51,11 @@ namespace Chronos.API
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var configuracaoDeUrls = new ConfiguracaoDeUrls();
+            Configuration.GetSection("ConfiguracaoDeUrls").Bind(configuracaoDeUrls);
+
+            app.UseCors(builder => builder.WithOrigins(configuracaoDeUrls.UrlFrontEnd));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

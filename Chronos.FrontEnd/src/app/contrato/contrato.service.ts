@@ -6,7 +6,7 @@ import { Contrato } from './contrato';
 
 @Injectable()
 export class ContratoService {
-  baseUrl = environment.apiBaseUrl + 'contratos';
+  baseUrl = `${environment.apiBaseUrl}contratos`;
 
   constructor(private http: HttpClient) { }
 

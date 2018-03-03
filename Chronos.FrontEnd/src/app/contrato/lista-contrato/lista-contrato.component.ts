@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Contrato } from '../contrato';
+import { ContratoService } from '../contrato.service';
 
 @Component({
   selector: 'app-lista-contrato',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaContratoComponent implements OnInit {
 
-  constructor() { }
+  contratos: Array<Contrato> = [];
+  constructor(private servico: ContratoService) { }
 
   ngOnInit() {
+    this.servico.get()
+      .subscribe(contratos => this.contratos.push(contratos));
   }
 
 }
