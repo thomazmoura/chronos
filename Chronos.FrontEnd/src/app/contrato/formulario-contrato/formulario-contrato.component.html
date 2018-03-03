@@ -4,5 +4,5 @@
     <label for="valorDaHora">Valor da Hora</label>
     <input type="text" class="form-control" id="valorDaHora" name="valorDaHora" required [(ngModel)]="contrato.valorDaHora">
   </div>
-  <button type="submit" class="btn btn-primary" (click)="salvar()">Salvar</button>
+  <button type="submit" class="btn btn-primary" (submit)="salvar()">Salvar</button>
 </form>
