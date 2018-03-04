@@ -23,7 +23,7 @@ namespace Chronos.API.Controllers
             return Ok(contratos);
         }
 
-        [HttpGet("{id}", Name = NomeDaRotaDeConsulta)]
+        [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             if (!_repositorio.Contratos.ConstaNoBanco(id))
@@ -45,7 +45,7 @@ namespace Chronos.API.Controllers
 
             _repositorio.Acrescentar(contrato);
 
-            return CreatedAtRoute(NomeDaRotaDeConsulta, contrato.Id, contrato);
+            return CreatedAtAction(nameof(Get), contrato.Id, contrato);
         }
 
         [HttpPut]
@@ -65,7 +65,7 @@ namespace Chronos.API.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
             if (!_repositorio.Contratos.ConstaNoBanco(id))

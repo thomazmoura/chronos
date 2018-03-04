@@ -1,8 +1,8 @@
 <h3>Cadastro de Contrato</h3>
-<form #cadastroForm="ngForm">
+<form #cadastroForm="ngForm" (submit)="salvar()">
   <div class="form-group">
     <label for="valorDaHora">Valor da Hora</label>
     <input type="text" class="form-control" id="valorDaHora" name="valorDaHora" required [(ngModel)]="contrato.valorDaHora">
   </div>
-  <button type="submit" class="btn btn-primary" (submit)="salvar()">Salvar</button>
+  <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

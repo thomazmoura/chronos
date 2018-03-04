@@ -18,6 +18,8 @@ namespace Chronos.API
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -28,7 +30,6 @@ namespace Chronos.API
             Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -54,12 +55,17 @@ namespace Chronos.API
             var configuracaoDeUrls = new ConfiguracaoDeUrls();
             Configuration.GetSection("ConfiguracaoDeUrls").Bind(configuracaoDeUrls);
 
-            app.UseCors(builder => builder.WithOrigins(configuracaoDeUrls.UrlFrontEnd));
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins(configuracaoDeUrls.UrlFrontEnd);
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
 
             app.UseMvc();
         }

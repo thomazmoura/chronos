@@ -10,16 +10,32 @@ export class ContratoService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Contrato> {
-    return this.http.get<Contrato>(this.baseUrl);
+  get(): Observable<Array<Contrato>> {
+    return this.http.get<Contrato[]>(this.baseUrl);
   }
 
-  post(contrato: Contrato): Observable<Contrato> {
-    return this.http.post<Contrato>(this.baseUrl, contrato);
+  post(contrato: Contrato) {
+    this.http.post<Contrato>(this.baseUrl, contrato)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
   }
 
   put(contrato: Contrato) {
-    this.http.post<Contrato>(this.baseUrl, contrato);
+    this.http.post<Contrato>(this.baseUrl, contrato)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
   }
 
   delete(id: string) {

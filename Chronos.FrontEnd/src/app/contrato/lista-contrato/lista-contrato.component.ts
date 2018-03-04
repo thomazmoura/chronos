@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Contrato } from '../contrato';
 import { ContratoService } from '../contrato.service';
@@ -10,12 +10,26 @@ import { ContratoService } from '../contrato.service';
 })
 export class ListaContratoComponent implements OnInit {
 
-  contratos: Array<Contrato> = [];
+  contratos: Array<Contrato>;
+  @Output() contratoSelecionado: EventEmitter<Contrato>;
+
   constructor(private servico: ContratoService) { }
 
   ngOnInit() {
     this.servico.get()
-      .subscribe(contratos => this.contratos.push(contratos));
+      .subscribe(
+        contrato => {
+          this.contratos = contrato;
+          console.log(contrato);
+        },
+        err => {
+          console.log(`Error occured: ${err}`);
+        }
+      );
+  }
+
+  selecionarContrato(contrato: Contrato) {
+    this.contratoSelecionado.emit(contrato);
   }
 
 }

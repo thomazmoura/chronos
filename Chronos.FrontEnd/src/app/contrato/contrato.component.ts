@@ -8,10 +8,14 @@ import { Contrato } from './contrato';
 })
 export class ContratoComponent implements OnInit {
 
+  contrato: Contrato;
   constructor() { }
 
-
   ngOnInit() {
+  }
+
+  atualizarContratoDoFormulario(contrato: Contrato) {
+    this.contrato = contrato;
   }
 
 }

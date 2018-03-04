@@ -1,4 +1,6 @@
 <h3>Lista de Contratos</h3>
-<ul class="list-group">
-  <li *ngFor="let contrato of contratos" class="list-group-item"> Contrato de valor {{contrato.valorDaHora}}</li>
+<ul class="list-group" *ngIf="contratos">
+  <li *ngFor="let contrato of contratos" class="list-group-item" (click)="selecionarContrato()">
+    Contrato ({{contrato.id}}) - {{contrato.valorDaHora | currency:'BRL'}}
+  </li>
 </ul>

@@ -8,13 +8,6 @@
             "format": "svg"
         },
         {
-            "icon": "test",
-            "extensions": [
-                "Chronos.API.Testes"
-            ],
-            "format": "svg"
-        },
-        {
             "icon": "www",
             "extensions": [
                 "Chronos.FrontEnd"
