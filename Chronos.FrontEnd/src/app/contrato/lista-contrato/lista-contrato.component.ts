@@ -13,9 +13,15 @@ export class ListaContratoComponent implements OnInit {
   contratos: Array<Contrato>;
   @Output() contratoSelecionado: EventEmitter<Contrato>;
 
-  constructor(private servico: ContratoService) { }
+  constructor(private servico: ContratoService) {
+    this.contratoSelecionado = new EventEmitter<Contrato>();
+  }
 
   ngOnInit() {
+    this.renovarLista();
+  }
+
+  renovarLista() {
     this.servico.get()
       .subscribe(
         contrato => {

@@ -15,6 +15,7 @@ export class ContratoComponent implements OnInit {
   }
 
   atualizarContratoDoFormulario(contrato: Contrato) {
+    console.log(contrato);
     this.contrato = contrato;
   }
 

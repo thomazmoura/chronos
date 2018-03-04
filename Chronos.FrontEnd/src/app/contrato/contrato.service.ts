@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 import { Observable } from 'rxjs/Observable';
 import { Contrato } from './contrato';
@@ -39,10 +39,15 @@ export class ContratoService {
   }
 
   delete(id: string) {
-    this.http.delete(this.baseUrl, {
-      params: {
-        id: id
-      }
-    });
+    const urlComId = `${this.baseUrl}/${id}`;
+    this.http.delete(urlComId)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
   }
 }

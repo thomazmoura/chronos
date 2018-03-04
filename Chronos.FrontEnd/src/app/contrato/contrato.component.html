@@ -1,6 +1,12 @@
 <div class="container">
   <h2>Contrato</h2>
   <hr>
-  <app-formulario-contrato></app-formulario-contrato>
-  <app-lista-contrato></app-lista-contrato>
+  <div class="row">
+    <div class="col-md-6">
+      <app-formulario-contrato [contrato]="contrato"></app-formulario-contrato>
+    </div>
+    <div class="col-md-6">
+      <app-lista-contrato (contratoSelecionado)="atualizarContratoDoFormulario($event)"></app-lista-contrato>
+    </div>
+  </div>
 </div>
