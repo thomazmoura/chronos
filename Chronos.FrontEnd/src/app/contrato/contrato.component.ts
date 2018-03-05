@@ -12,10 +12,14 @@ export class ContratoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.criarNovoContrato();
+  }
+
+  criarNovoContrato() {
+    this.contrato = new Contrato();
   }
 
   atualizarContratoDoFormulario(contrato: Contrato) {
-    console.log(contrato);
     this.contrato = contrato;
   }
 

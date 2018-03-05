@@ -12,29 +12,29 @@ import { ContratoService } from '../contrato.service';
 export class FormularioContratoComponent implements OnInit {
 
   @Input() public contrato: Contrato;
-  @Output() public listaDeContratosAlterada: EventEmitter<void>;
+  @Output() public contratoResetado: EventEmitter<void>;
 
   constructor(private servico: ContratoService) {
-    this.listaDeContratosAlterada = new EventEmitter();
+    this.contratoResetado = new EventEmitter();
   }
 
   ngOnInit() {
-    if (!this.contrato) {
-      this.criarNovoContrato();
-    }
   }
 
   salvar() {
-    this.servico.post(this.contrato);
+    if (this.contrato.id) {
+      this.servico.put(this.contrato);
+    } else {
+      this.servico.post(this.contrato);
+    }
   }
 
   excluir() {
     this.servico.delete(this.contrato.id);
-    this.listaDeContratosAlterada.emit();
   }
 
   criarNovoContrato() {
-    this.contrato = new Contrato();
+    this.contratoResetado.emit();
   }
 
 }

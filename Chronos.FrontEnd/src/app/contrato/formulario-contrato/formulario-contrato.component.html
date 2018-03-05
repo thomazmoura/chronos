@@ -1,5 +1,5 @@
 <h3>Cadastro de Contrato</h3>
-<form #cadastroForm="ngForm" (submit)="salvar()">
+<form #cadastroForm="ngForm" (submit)="salvar()" *ngIf="contrato">
   <div class="form-group" *ngIf="contrato.id">
     <label for="id">Id</label>
     <input type="text" class="form-control" id="id" name="id" disabled [(ngModel)]="contrato.id">
@@ -10,5 +10,5 @@
   </div>
   <button type="button" class="btn btn-secondary" *ngIf="contrato.id" (click)="criarNovoContrato()">Novo</button>
   <button type="button" class="btn btn-danger" *ngIf="contrato.id" (click)="excluir()">Excluir</button>
-  <button type="submit" class="btn btn-primary">Salvar</button>
+  <button type="submit" class="btn btn-primary">{{contrato.id? 'Atualizar': 'Salvar'}}</button>
 </form>

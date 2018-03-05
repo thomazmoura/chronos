@@ -3,7 +3,7 @@
   <hr>
   <div class="row">
     <div class="col-md-6">
-      <app-formulario-contrato [contrato]="contrato"></app-formulario-contrato>
+      <app-formulario-contrato [contrato]="contrato" (contratoResetado)="criarNovoContrato()"></app-formulario-contrato>
     </div>
     <div class="col-md-6">
       <app-lista-contrato (contratoSelecionado)="atualizarContratoDoFormulario($event)"></app-lista-contrato>

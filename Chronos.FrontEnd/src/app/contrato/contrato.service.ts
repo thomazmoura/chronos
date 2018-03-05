@@ -27,7 +27,7 @@ export class ContratoService {
   }
 
   put(contrato: Contrato) {
-    this.http.post<Contrato>(this.baseUrl, contrato)
+    this.http.put<Contrato>(this.baseUrl, contrato)
       .subscribe(
         res => {
           console.log(res);
