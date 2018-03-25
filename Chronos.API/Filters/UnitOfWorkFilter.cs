@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using Chronos.API.Dados;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Chronos.API.Filters
 {
-    public class UnitOfWorkFilter : IActionFilter
+    public class UnitOfWorkFilter : IAsyncActionFilter
     {
         private readonly IUnitOfWork _unitOfWork;
         public UnitOfWorkFilter(IUnitOfWork unitOfWork)
@@ -11,12 +12,12 @@ namespace Chronos.API.Filters
             _unitOfWork = unitOfWork;
         }
 
-        public void OnActionExecuted(ActionExecutedContext context)
+        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (context.Exception == null)
-                _unitOfWork.SalvarAlteracoes();
-        }
+            var resultadoExecucao = await next();
 
-        public void OnActionExecuting(ActionExecutingContext context) { }
+            if (resultadoExecucao.Exception == null)
+                await _unitOfWork.SalvarAlteracoes();
+        }
     }
 }

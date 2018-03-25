@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Chronos.API.Dados;
 
 namespace Chronos.API.Dados
@@ -20,12 +21,12 @@ namespace Chronos.API.Dados
             AcoesPosteriores = new Queue<Action>();
         }
 
-        public void SalvarAlteracoes()
+        public async Task SalvarAlteracoes()
         {
             while (AcoesPrevias.Any())
                 AcoesPrevias.Dequeue().Invoke();
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             while (AcoesPosteriores.Any())
                 AcoesPosteriores.Dequeue().Invoke();

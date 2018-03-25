@@ -44,7 +44,7 @@ namespace Chronos.API
             services.AddMvc(options =>
             {
                 options.Filters.Add<UnitOfWorkFilter>();
-                options.Filters.Add<IQueryableIteratorFilter>();
+                options.Filters.Add<QueryableIteratorFilter>();
             });
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Chronos.API.Dados
 {
@@ -7,6 +8,6 @@ namespace Chronos.API.Dados
     {
         Queue<Action> AcoesPrevias { get; }
         Queue<Action> AcoesPosteriores { get; }
-        void SalvarAlteracoes();
+        Task SalvarAlteracoes();
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chronos.API.Entidades
 {
@@ -22,10 +24,16 @@ namespace Chronos.API.Entidades
 
     public static class EntidadeExtensions
     {
-        public static IEnumerable<TEntidade> EmMemoria<TEntidade>(this IQueryable<TEntidade> entidades) where TEntidade : Entidade
+        public static List<TEntidade> EmMemoria<TEntidade>(this IQueryable<TEntidade> entidades) where TEntidade : Entidade
         {
             return entidades.ToList();
         }
+
+        public static Task<List<TEntidade>> EmMemoriaAsync<TEntidade>(this IQueryable<TEntidade> entidades) where TEntidade : Entidade
+        {
+            return entidades.ToListAsync();
+        }
+
 
         public static bool PossuiAlgumValor(this IQueryable<Entidade> entidades)
         {
