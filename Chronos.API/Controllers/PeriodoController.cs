@@ -7,8 +7,6 @@ namespace Chronos.API.Controllers
 {
     public class PeriodoController : Controller, IEntidadeApi<Periodo>
     {
-        private const string NomeDaRotaDeConsulta = "ConsultarPeriodo";
-
         private readonly IRepositorio _repositorio;
         public PeriodoController(IRepositorio repositorio)
         {
@@ -42,7 +40,7 @@ namespace Chronos.API.Controllers
 
             _repositorio.Acrescentar(periodo);
 
-            return CreatedAtRoute(NomeDaRotaDeConsulta, periodo.Id, periodo);
+            return CreatedAtAction(nameof(Get), periodo.Id, periodo);
         }
 
         [HttpPut]

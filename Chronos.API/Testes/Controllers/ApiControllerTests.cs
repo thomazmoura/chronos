@@ -127,11 +127,11 @@ namespace Chronos.API.Testes.Controllers
         }
 
         [Fact]
-        public void Post_RetornaCreatedAtRoute_QuandoAEntidadeEstáVálidaParaInserção()
+        public void Post_RetornaCreatedAtAction_QuandoAEntidadeEstáVálidaParaInserção()
         {
             var entidadeDeExemplo = ObterExemploEntidadeValidaParaInsercao();
 
-            var resultado = _controller.Post(entidadeDeExemplo) as CreatedAtRouteResult;
+            var resultado = _controller.Post(entidadeDeExemplo) as CreatedAtActionResult;
             var entidade = resultado.Value as TEntidade;
             var id = resultado.RouteValues["Id"].As<Guid>();
 

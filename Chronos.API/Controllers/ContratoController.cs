@@ -8,8 +8,6 @@ namespace Chronos.API.Controllers
     [Route("api/contratos")]
     public class ContratoController : Controller, IEntidadeApi<Contrato>
     {
-        private const string NomeDaRotaDeConsulta = "ConsultarContrato";
-
         private readonly IRepositorio _repositorio;
         public ContratoController(IRepositorio repositorio)
         {
@@ -23,7 +21,7 @@ namespace Chronos.API.Controllers
             return Ok(contratos);
         }
 
-        [HttpGet("{id}", Name = NomeDaRotaDeConsulta)]
+        [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             if (!_repositorio.Contratos.ConstaNoBanco(id))
@@ -45,7 +43,7 @@ namespace Chronos.API.Controllers
 
             _repositorio.Acrescentar(contrato);
 
-            return CreatedAtRoute(NomeDaRotaDeConsulta, contrato.Id, contrato);
+            return CreatedAtAction(nameof(Get), contrato.Id, contrato);
         }
 
         [HttpPut]

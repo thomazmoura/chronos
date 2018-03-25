@@ -8,8 +8,6 @@ namespace Chronos.API.Controllers
     [Route("api/folhas")]
     public class FolhaController : Controller, IEntidadeApi<Folha>
     {
-        private const string NomeDaRotaDeConsulta = "ConsultarFolha";
-
         private readonly IRepositorio _repositorio;
         public FolhaController(IRepositorio repositorio)
         {
@@ -23,7 +21,7 @@ namespace Chronos.API.Controllers
             return Ok(folhas);
         }
 
-        [HttpGet("{id}", Name = NomeDaRotaDeConsulta)]
+        [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             if (!_repositorio.Folhas.ConstaNoBanco(id))
@@ -45,7 +43,7 @@ namespace Chronos.API.Controllers
 
             _repositorio.Acrescentar(folha);
 
-            return CreatedAtRoute(NomeDaRotaDeConsulta, folha.Id, folha);
+            return CreatedAtAction(nameof(Get), folha.Id, folha);
         }
 
         [HttpPut]
