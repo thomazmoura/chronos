@@ -42,6 +42,7 @@ namespace Chronos.API
                 });
 
             services.UseChronosDependencies();
+            services.UseChronosConfiguration(Configuration);
 
             services.AddMvc(options =>
             {
@@ -50,11 +51,8 @@ namespace Chronos.API
             });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IConfiguracaoDeUrls configuracaoDeUrls)
         {
-            var configuracaoDeUrls = new ConfiguracaoDeUrls();
-            Configuration.GetSection("ConfiguracaoDeUrls").Bind(configuracaoDeUrls);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
